@@ -34,64 +34,53 @@ Things you may want to cover:
 | first_name_kana     | string     | null: false                    |
 | last_name_kana      | string     | null: false                    |
 | birth_date          | string     | null: false                    |
+| email               | string     | null: false                    |
 
 ### Association
 has_many :items
-has_many :purchases
+has_many :purchase_shippings
 
 
 ## itemsテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| category            | string     | null: false                    |
+| category_id         | string     | null: false                    |
 | product             | string     | null: false                    |
 | product_description | text       | null: false                    |
-| condition           | string     | null: false                    |
-| shipping_charges    | string     | null: false                    |
-| area                | string     | null: false                    |
-| shipping_days       | string     | null: false                    |
+| condition_id        | string     | null: false                    |
+| shipping_charges_id | string     | null: false                    |
+| area_id             | string     | null: false                    |
+| shipping_days_id    | string     | null: false                    |
 | price               | integer    | null: false                    |
-| user_id             | integer    | null: false, foreign_key: true |
-| purchase_id         | integer    | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
-belongs_to :purchase
-
-
-## purchasesテーブル
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| user_id             | integer    | null: false, foreign_key: true |
-
-### Association
-has_one    :item
-belongs_to :user
-has_many   :purchase_shippings
-has_many   :shippings, through: :purchase_shippings
+has_one    :purchase_shipping
 
 
 ## shippingsテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| postal_code         | integer    | null: false                    |
-| prefectures         | string     | null: false                    |
+| postal_code         | string     | null: false                    |
+| prefectures_id      | string     | null: false                    |
 | municipality        | string     | null: false                    |
 | address1            | string     | null: false                    |
 | address2            | string     |                                |
-| phone               | integer    | null: false                    |
+| phone               | string     | null: false                    |
 
 ### Association
 has_many :purchase_shippings
-has_many :purchases, through: :purchase_shippings
 
 
 ## purchase_shippingsテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| purchase_id         | integer    | null: false, foreign_key: true |
-| shipping_id         | integer    | null: false, foreign_key: true |
+| item                | references | null: false, foreign_key: true |
+| shipping            | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :purchase
+belongs_to :item
 belongs_to :shipping
+belongs_to :user
