@@ -33,8 +33,8 @@ Things you may want to cover:
 | last_name           | string     | null: false                    |
 | first_name_kana     | string     | null: false                    |
 | last_name_kana      | string     | null: false                    |
-| birth_date          | string     | null: false                    |
-| email               | string     | null: false                    |
+| birth_date          | date       | null: false                    |
+| email               | string     | null: false, unique: true      |
 
 ### Association
 has_many :items
@@ -48,9 +48,9 @@ has_many :purchase_shippings
 | product             | string     | null: false                    |
 | product_description | text       | null: false                    |
 | condition_id        | string     | null: false                    |
-| shipping_charges_id | string     | null: false                    |
+| shipping_charge_id  | string     | null: false                    |
 | area_id             | string     | null: false                    |
-| shipping_days_id    | string     | null: false                    |
+| shipping_day_id     | string     | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
@@ -63,24 +63,24 @@ has_one    :purchase_shipping
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_code         | string     | null: false                    |
-| prefectures_id      | string     | null: false                    |
+| area_id             | string     | null: false                    |
 | municipality        | string     | null: false                    |
 | address1            | string     | null: false                    |
 | address2            | string     |                                |
 | phone               | string     | null: false                    |
+| purchase_shipping   | references | null: false, foreign_key: true |
 
 ### Association
-has_many :purchase_shippings
+belongs_to :purchase_shipping
 
 
 ## purchase_shippingsテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | item                | references | null: false, foreign_key: true |
-| shipping            | references | null: false, foreign_key: true |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :item
-belongs_to :shipping
+has_many :shippings
 belongs_to :user
