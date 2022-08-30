@@ -44,13 +44,13 @@ has_many :purchase_shippings
 ## itemsテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| category_id         | string     | null: false                    |
+| category_id         | integer    | null: false                    |
 | product             | string     | null: false                    |
 | product_description | text       | null: false                    |
-| condition_id        | string     | null: false                    |
-| shipping_charge_id  | string     | null: false                    |
-| area_id             | string     | null: false                    |
-| shipping_day_id     | string     | null: false                    |
+| condition_id        | integer    | null: false                    |
+| shipping_charge_id  | integer    | null: false                    |
+| area_id             | integer    | null: false                    |
+| shipping_day_id     | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
@@ -63,7 +63,7 @@ has_one    :purchase_shipping
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_code         | string     | null: false                    |
-| area_id             | string     | null: false                    |
+| area_id             | integer    | null: false                    |
 | municipality        | string     | null: false                    |
 | address1            | string     | null: false                    |
 | address2            | string     |                                |
