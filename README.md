@@ -82,5 +82,5 @@ belongs_to :purchase_shipping
 
 ### Association
 belongs_to :item
-has_many :shippings
+has_one :shipping
 belongs_to :user
