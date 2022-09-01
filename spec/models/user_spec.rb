@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
 
     context '登録できないとき' do
       it 'nameが空だと登録できない' do
+
       end
       it 'emailが空では登録できない' do
       end
@@ -36,17 +37,17 @@ RSpec.describe User, type: :model do
       end
       it 'passwordが129文字以上では登録できない' do
       end
-      it 'last_nameは漢字・ひらがな・カタカナで無いと登録できない'
+      it 'last_nameは漢字・ひらがな・カタカナで無いと登録できない' do
       end
-      it 'first_nameは漢字・ひらがな・カタカナで無いと登録できない'
+      it 'first_nameは漢字・ひらがな・カタカナで無いと登録できない' do
       end
-      it 'last_name_kanaはカタカナで無いと登録できない'
+      it 'last_name_kanaはカタカナで無いと登録できない' do
       end
-      it 'first_name_kanaはカタカナで無いと登録できない'
+      it 'first_name_kanaはカタカナで無いと登録できない' do
       end
-      it '重複したemailが存在する場合は登録できない'
+      it '重複したemailが存在する場合は登録できない' do
       end
-      it 'emailは@を含まないと登録できない'
+      it 'emailは@を含まないと登録できない' do
       end
     end
   end
