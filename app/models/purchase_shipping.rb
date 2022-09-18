@@ -1,4 +1,4 @@
-class Order
+class PurchaseShipping
   include ActiveModel::Model
   attr_accessor :postal_code, :area_id, :municpality, :address1, :address2, :phone, :user_id, :item_id
 
@@ -10,7 +10,7 @@ class Order
   validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
-    order = Order.create(item_id: item_id, user_id: user_id)
-    Address.create(postal_code: postal_code, area_id: area_id, municpality: municpality, address1: address1, address2: address2, order_id: order_id)
+    purchase = Purchase.create(item_id: item_id, user_id: user_id)
+    Address.create(postal_code: postal_code, area_id: area_id, municpality: municpality, address1: address1, address2: address2, purchase_id: purchase_id)
   end
 end
