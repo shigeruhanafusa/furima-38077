@@ -56,7 +56,7 @@ has_many :purchases
 
 ### Association
 belongs_to :user
-has_one    :purchase_shipping
+has_one    :purchase
 
 
 ## shippingsテーブル
@@ -68,7 +68,7 @@ has_one    :purchase_shipping
 | address1            | string     | null: false                    |
 | address2            | string     |                                |
 | phone               | string     | null: false                    |
-| purchase_shipping   | references | null: false, foreign_key: true |
+| purchase            | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :purchase
