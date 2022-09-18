@@ -38,7 +38,7 @@ Things you may want to cover:
 
 ### Association
 has_many :items
-has_many :purchase_shippings
+has_many :purchases
 
 
 ## itemsテーブル
@@ -71,7 +71,7 @@ has_one    :purchase_shipping
 | purchase_shipping   | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :purchase_shipping
+belongs_to :purchase
 
 
 ## purchasesテーブル
