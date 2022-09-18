@@ -74,7 +74,7 @@ has_one    :purchase_shipping
 belongs_to :purchase_shipping
 
 
-## purchase_shippingsテーブル
+## purchasesテーブル
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | item                | references | null: false, foreign_key: true |
