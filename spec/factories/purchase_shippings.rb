@@ -11,5 +11,6 @@ FactoryBot.define do
     address1              { address.town.kanji }
     address2              { "1-1-1" }
     phone                 { Faker::Number.number(digits: 10) }
+    token                 { "tok_abcdefghijk00000000000000000" }
   end
 end

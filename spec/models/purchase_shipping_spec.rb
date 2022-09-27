@@ -10,7 +10,7 @@ RSpec.describe PurchaseShipping, type: :model do
     end
 
     context 'すべての値が正しく入力されていれば保存できる' do
-      it 'postal_code, municpality, user_id, item_id, address1, phone, area_idが存在すれば登録できる' do
+      it 'postal_code, municpality, user_id, item_id, address1, phone, area_id, tokenが存在すれば登録できる' do
         expect(@purchase).to be_valid
       end
 
@@ -49,6 +49,12 @@ RSpec.describe PurchaseShipping, type: :model do
         @purchase.area_id = 1
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Area can't be blank")
+      end
+
+      it 'tokenが空だと保存できない' do
+        @purchase.token = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Token can't be blank")
       end
 
       it 'user_idと紐づいていないと保存できない' do
