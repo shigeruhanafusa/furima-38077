@@ -1,14 +1,15 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, except: :index
-  
+  before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create, :move_to_index, :purchase_edit_move_to_index]
+  before_action :move_to_index, except: [:show, :new, :create]
+  before_action :purchase_edit_move_to_index, except: [:show, :new, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @purchase_shipping = PurchaseShipping.new
   end
 
   def create
     @purchase_shipping = PurchaseShipping.new(pruchase_params)
-    @item = Item.find(params[:item_id])
     if @purchase_shipping.valid?
       pay_item
       @purchase_shipping.save
@@ -16,6 +17,10 @@ class PurchasesController < ApplicationController
     else
       render :index
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   private
@@ -31,6 +36,14 @@ class PurchasesController < ApplicationController
         card: pruchase_params[:token],    # カードトークン
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
+  end
+
+  def move_to_index
+    redirect_to root_path if user_signed_in? && current_user.id == @item.user.id
+  end
+
+  def purchase_edit_move_to_index
+    redirect_to root_path unless user_signed_in? && @item.purchase == nil
   end
 
 end
