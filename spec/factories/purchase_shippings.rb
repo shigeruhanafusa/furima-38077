@@ -6,11 +6,11 @@ FactoryBot.define do
     end
 
     area_id               { 3 }
-    postal_code           { "123-4567" }
+    postal_code           { '123-4567' }
     municpality           { address.city.kanji }
     address1              { address.town.kanji }
-    address2              { "1-1-1" }
+    address2              { '1-1-1' }
     phone                 { Faker::Number.number(digits: 10) }
-    token                 { "tok_abcdefghijk00000000000000000" }
+    token                 { 'tok_abcdefghijk00000000000000000' }
   end
 end

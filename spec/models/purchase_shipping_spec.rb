@@ -5,7 +5,7 @@ RSpec.describe PurchaseShipping, type: :model do
     before do
       item = FactoryBot.create(:item)
       user = FactoryBot.create(:user)
-      @purchase  = FactoryBot.build(:purchase_shipping, user_id: user.id, item_id: item.id)
+      @purchase = FactoryBot.build(:purchase_shipping, user_id: user.id, item_id: item.id)
       sleep(0.5)
     end
 
@@ -16,7 +16,7 @@ RSpec.describe PurchaseShipping, type: :model do
 
       it 'address2が空でも保存できること' do
         @purchase.address2 = ''
-        expect(@purchase).to be_valid 
+        expect(@purchase).to be_valid
       end
     end
 
@@ -70,24 +70,22 @@ RSpec.describe PurchaseShipping, type: :model do
       end
 
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できない' do
-        @purchase.postal_code = 1234567
+        @purchase.postal_code = 1_234_567
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
 
       it 'phoneが10桁以上11桁以内の半角数値でないと保存できない' do
         @purchase.phone = Faker::Number.between(from: 12, to: 30)
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone is invalid. Include hyphen(-)")
+        expect(@purchase.errors.full_messages).to include('Phone is invalid. Include hyphen(-)')
       end
 
       it 'phoneにハイフンを含むと保存できない' do
-        @purchase.phone = 123-4567-8910
+        @purchase.phone = 123 - 4567 - 8910
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone is invalid. Include hyphen(-)")
+        expect(@purchase.errors.full_messages).to include('Phone is invalid. Include hyphen(-)')
       end
-
     end
-
   end
 end

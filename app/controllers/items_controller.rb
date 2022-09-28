@@ -56,6 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase_edit_move_to_index
-    redirect_to action: :index unless user_signed_in? && @item.purchase == nil
+    redirect_to action: :index unless user_signed_in? && @item.purchase.nil?
   end
 end

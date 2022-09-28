@@ -26,16 +26,18 @@ class PurchasesController < ApplicationController
   private
 
   def pruchase_params
-    params.require(:purchase_shipping).permit(:postal_code, :area_id, :municpality, :address1, :address2, :phone).merge(user_id: current_user.id, item_id:params[:item_id], token: params[:token])
+    params.require(:purchase_shipping).permit(:postal_code, :area_id, :municpality, :address1, :address2, :phone).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
-      Payjp::Charge.create(
-        amount: @item[:price],  # 商品の値段
-        card: pruchase_params[:token],    # カードトークン
-        currency: 'jpy'                 # 通貨の種類（日本円）
-      )
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item[:price],  # 商品の値段
+      card: pruchase_params[:token], # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
   end
 
   def move_to_index
@@ -43,7 +45,6 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_edit_move_to_index
-    redirect_to root_path unless user_signed_in? && @item.purchase == nil
+    redirect_to root_path unless user_signed_in? && @item.purchase.nil?
   end
-
 end
