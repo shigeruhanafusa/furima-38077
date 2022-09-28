@@ -9,7 +9,7 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       
-      <% if @item.blank? %>
+      <% if @item.purchase %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -25,18 +25,17 @@
       </span>
     </div>
 
-    <%# pruchase_shippingテーブルを作成してから下記に追記  && @item.purchase_shipping == nil  %>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @item.purchase == nil %>
 
       <% if current_user.id == @item.user.id %>
 
-      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+        <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
 
       <% else %>
 
-      <%= link_to "購入画面に進む", item_purchases_path(@item.id) , method: :get, class:"item-red-btn"%>
+        <%= link_to "購入画面に進む", item_purchases_path(@item.id) , method: :get, class:"item-red-btn"%>
 
       <% end %>
 
