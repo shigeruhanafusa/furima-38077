@@ -75,8 +75,14 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
 
-      it 'phoneが10桁以上11桁以内の半角数値でないと保存できない' do
+      it 'phoneが12桁以上の半角数値では保存できない' do
         @purchase.phone = Faker::Number.between(from: 12, to: 30)
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include('Phone is invalid. Include hyphen(-)')
+      end
+
+      it 'phoneが9桁以下の半角数値では保存できない' do
+        @purchase.phone = Faker::Number.between(from: 0, to: 9)
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Phone is invalid. Include hyphen(-)')
       end
