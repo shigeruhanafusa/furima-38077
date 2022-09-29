@@ -19,11 +19,11 @@ class PurchasesController < ApplicationController
     end
   end
 
+  private
+
   def set_item
     @item = Item.find(params[:item_id])
   end
-
-  private
 
   def pruchase_params
     params.require(:purchase_shipping).permit(:postal_code, :area_id, :municpality, :address1, :address2, :phone).merge(
