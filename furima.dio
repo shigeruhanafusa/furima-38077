@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="fi6EUqa89Lba4cemPoZs" name="ページ1">
-        <mxGraphModel dx="766" dy="603" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="428" dy="380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -374,7 +374,7 @@
                         <mxPoint x="480" y="732" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="169" value="purchase_shippingsテーブル" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;perimeterSpacing=0;" parent="1" vertex="1">
+                <mxCell id="169" value="purchasesテーブル" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;perimeterSpacing=0;" parent="1" vertex="1">
                     <mxGeometry x="10" y="590" width="340" height="240.00000000000023" as="geometry">
                         <mxRectangle x="40" y="340" width="140" height="30" as="alternateBounds"/>
                     </mxGeometry>
