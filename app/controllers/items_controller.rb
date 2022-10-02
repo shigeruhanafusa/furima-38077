@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :purchase_edit_move_to_index, except: [:index, :show, :new, :create]
 
   def index
-    @items = Item.all.order('created_at ASC')
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
