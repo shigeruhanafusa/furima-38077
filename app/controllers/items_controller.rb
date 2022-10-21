@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
     # @postから情報をハッシュとして取り出し、@post_formとしてインスタンス生成する
     item_attributes = @item.attributes
     @item_form = ItemForm.new(item_attributes)
+    @item_form.tag_name = @item.tags&.first&.tag_name
   end
 
   def update
@@ -57,8 +58,8 @@ class ItemsController < ApplicationController
   end
 
   def item_form_params
-    params.require(:item_form).permit(:image, :product, :product_description, :price, :category_id, :condition_id,
-                                 :shipping_charge_id, :area_id, :shipping_day_id).merge(user_id: current_user.id)
+    params.require(:item_form).permit(:product, :product_description, :price, :category_id, :condition_id,
+                                 :shipping_charge_id, :area_id, :shipping_day_id, :tag_name, :image).merge(user_id: current_user.id)
   end
 
   def move_to_index
