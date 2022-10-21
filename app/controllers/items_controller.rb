@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :move_to_index, :destroy]
-  before_action :move_to_index, except: [:index, :show, :new, :create]
-  before_action :purchase_edit_move_to_index, except: [:index, :show, :new, :create]
+  before_action :move_to_index, except: [:index, :show, :new, :create, :search]
+  before_action :purchase_edit_move_to_index, except: [:index, :show, :new, :create, :search]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @postから情報をハッシュとして取り出し、@post_formとしてインスタンス生成する
+    # @itemから情報をハッシュとして取り出し、@item_formとしてインスタンス生成する
     item_attributes = @item.attributes
     @item_form = ItemForm.new(item_attributes)
     @item_form.tag_name = @item.tags&.first&.tag_name
@@ -49,6 +49,12 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
+  end
+
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
   end
 
   private
