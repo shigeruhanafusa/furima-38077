@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :move_to_index, :destroy]
-  before_action :move_to_index, except: [:index, :show, :new, :create, :search]
-  before_action :purchase_edit_move_to_index, except: [:index, :show, :new, :create, :search]
+  before_action :move_to_index, except: [:index, :show, :new, :create, :search, :tag_search]
+  before_action :purchase_edit_move_to_index, except: [:index, :show, :new, :create, :search, :tag_search]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -56,6 +56,20 @@ class ItemsController < ApplicationController
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
   end
+
+  def tag_search
+    # params[:q]がnilではない且つ、params[:q][:name]がnilではないとき（商品名の欄が入力されているとき）
+    # if params[:q] && params[:q][:name]と同じような意味合い
+    if params[:q]&.dig(:product)
+      # squishメソッドで余分なスペースを削除する
+      squished_keywords = params[:q][:product].squish
+      ## 半角スペースを区切り文字として配列を生成し、paramsに入れる
+      params[:q][:product_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+  end
+
 
   private
 
