@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       get 'tag_search'
     end
     resources :comments, only: :create
+    resources :purchases, only: [:index, :create]
   end
-  resources :purchases, only: [:index, :create]
 end
