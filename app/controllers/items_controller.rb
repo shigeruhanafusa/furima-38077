@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
 
   def create
     @item_form = ItemForm.new(item_form_params)
-    if @item_form.valid? 
+    if @item_form.valid?
       @item_form.save
       redirect_to root_path
     else
@@ -54,9 +54,10 @@ class ItemsController < ApplicationController
   end
 
   def search
-    return nil if params[:keyword] == ""
-    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
-    render json:{ keyword: tag }
+    return nil if params[:keyword] == ''
+
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
+    render json: { keyword: tag }
   end
 
   def tag_search
@@ -66,12 +67,11 @@ class ItemsController < ApplicationController
       # squishメソッドで余分なスペースを削除する
       squished_keywords = params[:q][:product].squish
       ## 半角スペースを区切り文字として配列を生成し、paramsに入れる
-      params[:q][:product_cont_any] = squished_keywords.split(" ")
+      params[:q][:product_cont_any] = squished_keywords.split(' ')
     end
     @q = Item.ransack(params[:q])
     @items = @q.result
   end
-
 
   private
 
@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
 
   def item_form_params
     params.require(:item_form).permit(:product, :product_description, :price, :category_id, :condition_id,
-                                 :shipping_charge_id, :area_id, :shipping_day_id, :tag_name, :image).merge(user_id: current_user.id)
+                                      :shipping_charge_id, :area_id, :shipping_day_id, :tag_name, :image).merge(user_id: current_user.id)
   end
 
   def move_to_index
