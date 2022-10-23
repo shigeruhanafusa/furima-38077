@@ -8,16 +8,6 @@ ja:
         first_name: 名前
         last_name_kana: 名字(カナ)
         first_name_kana: 名前(カナ)
-      item:
-        product: 商品名
-        image: 画像
-        product_description: 商品の説明
-        price: 値段
-        area_id: 発送元の地域
-        category_id: カテゴリー
-        condition_id: 商品の状態
-        shipping_charge_id: 発送料の負担
-        shipping_day_id: 発送までの日数
 
   activemodel:
     attributes:
@@ -28,3 +18,13 @@ ja:
         municpality: 市区町村
         address1: 番地
         phone: 電話番号
+      item_form:
+        product: 商品名
+        image: 画像
+        product_description: 商品の説明
+        price: 値段
+        area_id: 発送元の地域
+        category_id: カテゴリー
+        condition_id: 商品の状態
+        shipping_charge_id: 発送料の負担
+        shipping_day_id: 発送までの日数
