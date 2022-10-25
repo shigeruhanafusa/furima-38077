@@ -5,10 +5,10 @@ class ItemForm
                 :shipping_charge_id, :area_id, :shipping_day_id, :price, :user_id, :tag_name, :item_id, :image
 
   with_options presence: true do
-    validates :product, presence: true
-    validates :product_description, presence: true
-    validates :image, presence: true
-    validates :price, presence: true,
+    validates :product
+    validates :product_description
+    validates :image
+    validates :price,
                       numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/ }
   end
   validates :area_id, numericality: { other_than: 1, message: 'を選択してください' }
