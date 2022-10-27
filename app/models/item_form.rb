@@ -8,9 +8,11 @@ class ItemForm
     validates :product
     validates :product_description
     validates :image
-    validates :price,
-                      numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/ }
+    validates :user_id
   end
+    
+  validates :price,
+                      numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/ }
   validates :area_id, numericality: { other_than: 1, message: 'を選択してください' }
   validates :category_id, numericality: { other_than: 1, message: 'を選択してください' }
   validates :condition_id, numericality: { other_than: 1, message: 'を選択してください' }
