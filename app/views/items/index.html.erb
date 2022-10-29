@@ -13,8 +13,8 @@
       フリマアプリです
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+      <%= link_to image_tag("/images/app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("/images/google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
@@ -37,7 +37,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag asset_path("furima-intro02.png"), class:"list-pict" %>
+        <%= image_tag asset_path("/images/furima-intro02.png"), class:"list-pict" %>
         <span class='reason-list-number'>2</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>シンプル</span>
@@ -48,7 +48,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag asset_path("furima-intro03.png"), class:"list-pict" %>
+        <%= image_tag asset_path("/images/furima-intro03.png"), class:"list-pict" %>
         <span class='reason-list-number'>3</span>
         <h3 class='reason-list-text'>
           手数料
@@ -77,8 +77,8 @@
       ほしかったあの商品に出会えるかもしれません。
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+      <%= link_to image_tag("/images/app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("/images/google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
@@ -90,7 +90,7 @@
     </h2>
     <ul class='feature-lists'>
       <li class='list'>
-        <%= image_tag asset_path("furima-intro04.png"), class:"list-pict" %>
+        <%= image_tag asset_path("/images/furima-intro04.png"), class:"list-pict" %>
         <h3 class='feature-list-text'>
           簡単に売り買いできる
         </h3>
@@ -99,7 +99,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag asset_path("furima-intro05.png"), class:"list-pict" %>
+        <%= image_tag asset_path("/images/furima-intro05.png"), class:"list-pict" %>
         <h3 class='feature-list-text'>
           売上金は即日振込みに対応
         </h3>
@@ -108,7 +108,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag asset_path("furima-intro06.png"), class:"list-pict" %>
+        <%= image_tag asset_path("/images/furima-intro06.png"), class:"list-pict" %>
         <h3 class='feature-list-text'>
           様々な支払いに対応
         </h3>
@@ -183,6 +183,6 @@
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
-  <%= image_tag asset_path('icon_camera.png') , size: '185x50' ,class: "purchase-btn-icon" %>
+  <%= image_tag asset_path('/images/icon_camera.png') , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
