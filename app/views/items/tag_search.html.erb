@@ -7,32 +7,34 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
+
+    <%= search_form_for @q, url: tag_search_items_path, html: {id: "detailed-search-form"} do |f| %>
+      <div class="search-field">
+        <%= f.label :product, '商品名' %>
+        <br>
+        <%= f.text_field :product, placeholder: '商品名', value: params[:q]&.dig(:product) %>
+      </div>
+      <div class="search-field">
+        <%= f.label :user_name_cont, '出品者名' %>
+        <br>
+        <%= f.text_field :user_name_cont, placeholder: '出品者名' %>
+      </div>
+      <div class="search-field">
+        <%= f.label :category_id_in, 'カテゴリ' %>
+        <br>
+        <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"}) %>
+      </div>
+      <div class="search-field">
+        <%= f.label :price_gteq, '価格'%>
+        <br>
+        <%= f.number_field :price_gteq %> 円以上
+        <br>
+        <%= f.number_field :price_lteq %> 円以下
+      </div>
+      <%= f.submit '検索' %>
+    <% end %>
+
     <ul class='item-lists'>
-      <%= search_form_for @q, url: tag_search_items_path, html: {id: "detailed-search-form"} do |f| %>
-        <div class="search-field">
-          <%= f.label :product, '商品名' %>
-          <br>
-          <%= f.text_field :product, placeholder: '商品名', value: params[:q]&.dig(:product) %>
-        </div>
-        <div class="search-field">
-          <%= f.label :user_name_cont, '出品者名' %>
-          <br>
-          <%= f.text_field :user_name_cont, placeholder: '出品者名' %>
-        </div>
-        <div class="search-field">
-          <%= f.label :category_id_in, 'カテゴリ' %>
-          <br>
-          <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name, {include_blank: "---"}) %>
-        </div>
-        <div class="search-field">
-          <%= f.label :price_gteq, '価格'%>
-          <br>
-          <%= f.number_field :price_gteq %> 円以上
-          <br>
-          <%= f.number_field :price_lteq %> 円以下
-        </div>
-        <%= f.submit '検索' %>
-      <% end %>
 
       <% @items.each do |item| %>
       <li class='list'>        
